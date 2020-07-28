@@ -12,7 +12,7 @@ def main(mazes):
 
         start, end = find_start_end_nodes(arr, x, y)
         print(start, end)
-        # print(arr[201][192])
+        # print(arr[0][0])
         save_img(arr, filename)
 
 
