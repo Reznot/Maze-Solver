@@ -27,3 +27,5 @@ class Node:
         if current_node.x > 0:
             if graph[current_node.x - 1][current_node.y].reachable:
                 neighbors.append(graph[current_node.x - 1][current_node.y])
+
+        return neighbors
