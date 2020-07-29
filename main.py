@@ -27,7 +27,6 @@ def init_graph(arr, start, end, x, y):
             graph[i][j] = Node(i, j, arr[i][j][0])
 
     graph[start[0]][start[1]].set_start_node(graph[end[0]][end[1]])  # set estimated cost from start to target
-    # print(graph[start[0]][start[1]].h_cost)
     return graph
 
 
