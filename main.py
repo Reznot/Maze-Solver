@@ -29,11 +29,10 @@ def init_graph(arr, start, end, x, y):
 # def color_path(path):
 #
 
+
 '''
 Determines start and end nodes of the maze
 '''
-
-
 def find_start_end_nodes(arr, x, y):
     start_node = []
     end_node = []
