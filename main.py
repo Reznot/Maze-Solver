@@ -12,12 +12,19 @@ def main(mazes):
         x, y, z = arr.shape  # array shape & size
 
         start, end = find_start_end_nodes(arr, x, y)
-        print(start, end)
-        # print(arr[0][0])
         save_img(arr, filename)
+        graph = init_graph(arr, start, end, x, y)
 
 
-def init_graph(arr, start):
+def init_graph(arr, start, end, x, y):
+    graph = [[0 for i in range(x)] for j in range(y)]
+    for i in range(x):
+        for j in range(y):
+            graph[i][j] = Node(i, j, arr[i][j][0])
+
+    graph[start[0]][start[1]].set_start_node(graph[end[0]][end[1]])  # set estimated cost from start to target
+    return graph
+
 
 # def color_path(path):
 #
@@ -25,6 +32,8 @@ def init_graph(arr, start):
 '''
 Determines start and end nodes of the maze
 '''
+
+
 def find_start_end_nodes(arr, x, y):
     start_node = []
     end_node = []
