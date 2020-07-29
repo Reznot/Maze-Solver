@@ -61,11 +61,11 @@ def find_start_end_nodes(arr, x, y):
 
 def save_img(arr, org_name):
     img = Image.fromarray(arr, 'RGBA')
-    img.save(f'.\solved\{org_name}_solved.png')
+    img.save(f'./solved/{org_name}_solved.png')
 
 
 if __name__ == '__main__':
-    images = [f for f in glob.glob('.\maze\*.png')]  # Get list of all maze images
+    images = [f for f in glob.glob('./maze/*.png')]  # Get list of all maze images
     start_time = time.time()
     main(images)
     print(f'Exec time: {round((time.time() - start_time), 3)}')
