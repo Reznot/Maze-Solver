@@ -16,7 +16,8 @@ def main(mazes):
         save_img(arr, filename)
         graph = init_graph(arr, start, end, x, y)
         path = astar(graph[start[0]][start[1]], graph[end[0]][end[1]], graph, x, y)
-        print(path)
+        solved_arr = color_path(arr, path)
+        save_img(solved_arr, filename)
 
 
 def init_graph(arr, start, end, x, y):
@@ -30,13 +31,17 @@ def init_graph(arr, start, end, x, y):
     return graph
 
 
-# def color_path(path):
-#
+def color_path(arr, path):
+    for node in path:
+        arr[node.x][node.y] = [102, 0, 255, 255]
+    return arr
 
 
 '''
 Determines start and end nodes of the maze
 '''
+
+
 def find_start_end_nodes(arr, x, y):
     start_node = []
     end_node = []
