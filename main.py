@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 import glob, os
+from node import Node
 
 
 def main(mazes):
@@ -16,6 +17,14 @@ def main(mazes):
         save_img(arr, filename)
 
 
+def init_graph(arr, start):
+
+# def color_path(path):
+#
+
+'''
+Determines start and end nodes of the maze
+'''
 def find_start_end_nodes(arr, x, y):
     start_node = []
     end_node = []
@@ -25,7 +34,7 @@ def find_start_end_nodes(arr, x, y):
             break
 
     for j in reversed(range(x)):
-        if arr[y-1][j][0] == 255:
+        if arr[y - 1][j][0] == 255:
             end_node = [y - 1, j]
             break
     return start_node, end_node
