@@ -3,7 +3,7 @@ import math
 
 class Node:
     def __init__(self, x, y, color):
-        self.reachable = color != 0
+        self.is_reachable = color != 0
         self.x = x
         self.y = y
         self.parent = None
@@ -25,7 +25,30 @@ class Node:
     def get_neighbors(current_node, graph, x, y):
         neighbors = []
         if current_node.x > 0:
-            if graph[current_node.x - 1][current_node.y].reachable:
+            if graph[current_node.x - 1][current_node.y].is_reachable:
                 neighbors.append(graph[current_node.x - 1][current_node.y])
+        if current_node.y > 0:
+            if graph[current_node.x][current_node.y - 1].is_reachable:
+                neighbors.append(graph[current_node.x][current_node.y - 1])
+        if current_node.x < x:
+            if graph[current_node.x + 1][current_node.y].is_reachable:
+                neighbors.append(graph[current_node.x + 1][current_node.y])
+        if current_node.y < y:
+            if graph[current_node.x][current_node.y + 1].is_reachable:
+                neighbors.append(graph[current_node.x][current_node.y + 1])
+
+        # diagonal neighbors
+        if current_node.x > 0 and current_node.y > 0:
+            if graph[current_node.x - 1][current_node.y - 1].is_reachable:
+                neighbors.append(graph[current_node.x - 1][current_node.y - 1])
+        if current_node.x > 0 and current_node.y < y:
+            if graph[current_node.x - 1][current_node.y + 1].is_reachable:
+                neighbors.append(graph[current_node.x - 1][current_node.y + 1])
+        if current_node.x < x and current_node.y > 0:
+            if graph[current_node.x + 1][current_node.y - 1].is_reachable:
+                neighbors.append(graph[current_node.x + 1][current_node.y - 1])
+        if current_node.x < x and current_node.y < y:
+            if graph[current_node.x + 1][current_node.y + 1].is_reachable:
+                neighbors.append(graph[current_node.x + 1][current_node.y + 1])
 
         return neighbors
