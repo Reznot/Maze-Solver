@@ -30,7 +30,7 @@ class Node:
         if current_node.y > 0:
             if graph[current_node.x][current_node.y - 1].is_reachable:
                 neighbors.append(graph[current_node.x][current_node.y - 1])
-        if current_node.x < x:
+        if current_node.x < x - 1:
             if graph[current_node.x + 1][current_node.y].is_reachable:
                 neighbors.append(graph[current_node.x + 1][current_node.y])
         if current_node.y < y:
@@ -38,17 +38,28 @@ class Node:
                 neighbors.append(graph[current_node.x][current_node.y + 1])
 
         # diagonal neighbors
-        if current_node.x > 0 and current_node.y > 0:
-            if graph[current_node.x - 1][current_node.y - 1].is_reachable:
-                neighbors.append(graph[current_node.x - 1][current_node.y - 1])
-        if current_node.x > 0 and current_node.y < y:
-            if graph[current_node.x - 1][current_node.y + 1].is_reachable:
-                neighbors.append(graph[current_node.x - 1][current_node.y + 1])
-        if current_node.x < x and current_node.y > 0:
-            if graph[current_node.x + 1][current_node.y - 1].is_reachable:
-                neighbors.append(graph[current_node.x + 1][current_node.y - 1])
-        if current_node.x < x and current_node.y < y:
-            if graph[current_node.x + 1][current_node.y + 1].is_reachable:
-                neighbors.append(graph[current_node.x + 1][current_node.y + 1])
+        # if current_node.x > 0 and current_node.y > 0:
+        #     if graph[current_node.x - 1][current_node.y - 1].is_reachable:
+        #         neighbors.append(graph[current_node.x - 1][current_node.y - 1])
+        # if current_node.x > 0 and current_node.y < y:
+        #     if graph[current_node.x - 1][current_node.y + 1].is_reachable:
+        #         neighbors.append(graph[current_node.x - 1][current_node.y + 1])
+        # if current_node.x < x and current_node.y > 0:
+        #     if graph[current_node.x + 1][current_node.y - 1].is_reachable:
+        #         neighbors.append(graph[current_node.x + 1][current_node.y - 1])
+        # if current_node.x < x and current_node.y < y:
+        #     if graph[current_node.x + 1][current_node.y + 1].is_reachable:
+        #         neighbors.append(graph[current_node.x + 1][current_node.y + 1])
 
         return neighbors
+
+    def check_if_better(self, current_node, target_node):
+        heuristic_distance = self.euclidean_distance(target_node)
+        # if current_node.g_cost + 1 + heuristic_distance <= current_node.f_cost:
+        if 1 == 1:
+            self.g_cost = current_node.g_cost + 1
+            self.h_cost = heuristic_distance
+            self.f_cost = self.g_cost + self.f_cost
+            self.parent = current_node
+            return True
+        return False

@@ -34,3 +34,9 @@ class PriorityQueue:
             return None
         else:
             return self.elements.pop(len(self.elements) - 1)
+
+    def len(self):
+        return len(self.elements)
+
+    def includes(self, el):
+        return True if el in self.elements else False

@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import glob, os
 from node import Node
+from astar import astar
 
 
 def main(mazes):
@@ -14,6 +15,8 @@ def main(mazes):
         start, end = find_start_end_nodes(arr, x, y)
         save_img(arr, filename)
         graph = init_graph(arr, start, end, x, y)
+        path = astar(graph[start[0]][start[1]], graph[end[0]][end[1]], graph, x, y)
+        print(path)
 
 
 def init_graph(arr, start, end, x, y):
