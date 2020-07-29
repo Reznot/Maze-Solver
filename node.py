@@ -16,9 +16,12 @@ class Node:
     def euclidean_distance(self, target):
         return math.sqrt((target.x - self.x) ** 2 + (target.y - self.y) ** 2)
 
+    def manhattan_distance(self, target):
+        return abs(self.x - target.x) + abs(self.y - target.y)
+
     def set_start_node(self, target):
         self.g_cost = 0
-        self.h_cost = self.euclidean_distance(target)
+        self.h_cost = self.manhattan_distance(target)
         self.f_cost = self.g_cost + self.h_cost
         self.parent = self
 
@@ -40,7 +43,7 @@ class Node:
         return neighbors
 
     def calc_f_cost(self, current_node, target_node):
-        heuristic_distance = self.euclidean_distance(target_node)
+        heuristic_distance = self.manhattan_distance(target_node)
         self.g_cost = current_node.g_cost + 1
         self.h_cost = heuristic_distance
         self.f_cost = self.g_cost + self.f_cost

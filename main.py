@@ -4,6 +4,8 @@ import glob, os
 from node import Node
 from astar import astar
 
+import time
+
 
 def main(mazes):
     for maze in mazes:
@@ -63,4 +65,6 @@ def save_img(arr, org_name):
 
 if __name__ == '__main__':
     images = [f for f in glob.glob('.\maze\*.png')]  # Get list of all maze images
+    start_time = time.time()
     main(images)
+    print(f'Exec time: {round((time.time() - start_time), 3)}')
