@@ -22,6 +22,9 @@ def main(mazes):
         save_img(solved_arr, filename)
 
 
+'''
+Initialize graph structure for A* search
+'''
 def init_graph(arr, start, end, x, y):
     graph = [[0 for i in range(x)] for j in range(y)]
     for i in range(x):
@@ -41,8 +44,6 @@ def color_path(arr, path):
 '''
 Determines start and end nodes of the maze
 '''
-
-
 def find_start_end_nodes(arr, x, y):
     start_node = []
     end_node = []
