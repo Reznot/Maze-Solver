@@ -1,6 +1,6 @@
 ## Maze-Solver
 
-#Run
+### Run
 1. Clone repository
 2. pip install pillow & pip install numpy
 3. Go to MazeSolver directory
